@@ -1,13 +1,14 @@
 import graphene
 
 from .article_schema import ArticleQuery, ArticleMutation
+from .user_schema import UserQuery, UserMutation
 
 
-class Query(ArticleQuery):
+class Query(ArticleQuery, UserQuery):
     pass
 
 
-class Mutation(ArticleMutation):
+class Mutation(ArticleMutation, UserMutation):
     pass
 
 
