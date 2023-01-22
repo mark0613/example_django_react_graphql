@@ -1,5 +1,6 @@
 import graphene
 from graphene_django.types import DjangoObjectType, ObjectType
+from graphql_jwt.decorators import login_required
 
 from article.models import Article
 
@@ -39,6 +40,7 @@ class CreateArticle(graphene.Mutation):
     article = graphene.Field(ArticleType)
     
     @staticmethod
+    @login_required
     def mutate(root, info, input=None):
         ok = True
         article_instance = Article(
