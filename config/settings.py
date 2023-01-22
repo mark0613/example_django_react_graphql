@@ -136,3 +136,7 @@ GRAPHENE = {
         'graphql_jwt.middleware.JSONWebTokenMiddleware',
     ],
 }
+
+GRAPHQL_JWT = {
+    'JWT_VERIFY_EXPIRATION': True,
+}
