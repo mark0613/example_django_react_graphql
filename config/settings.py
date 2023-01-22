@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -138,5 +139,6 @@ GRAPHENE = {
 }
 
 GRAPHQL_JWT = {
+    'JWT_EXPIRATION_DELTA': timedelta(hours=1),
     'JWT_VERIFY_EXPIRATION': True,
 }
