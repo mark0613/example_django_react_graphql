@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 
-load_dotenv(PROJECT_DIR / 'backend/.env')
+load_dotenv(BASE_DIR / '.env')
 
 sys.path.append(os.getenv('VENV_PATH'))
 
