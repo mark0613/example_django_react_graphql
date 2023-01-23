@@ -3,6 +3,10 @@ from graphene_django.types import DjangoObjectType, ObjectType
 from graphql_jwt.decorators import login_required
 
 from article.models import Article
+from article.services import ArticleService
+
+
+article_service = ArticleService()
 
 
 class ArticleType(DjangoObjectType):
@@ -17,19 +21,16 @@ class ArticleInput(graphene.InputObjectType):
 
 
 class ArticleQuery(ObjectType):
-    article = graphene.Field(ArticleType, id=graphene.Int())
+    article = graphene.Field(ArticleType, id=graphene.Int(), title=graphene.String())
     articles = graphene.List(ArticleType)
 
     def resolve_article(self, info, **kwargs):
         id = kwargs.get('id')
-
-        if id is not None:
-            return Article.objects.get(pk=id)
-
-        return None
+        title = kwargs.get('title')
+        return article_service.get_article(id=id, title=title)
 
     def resolve_articles(self, info, **kwargs):
-        return Article.objects.all()
+        return article_service.get_all_articles()
 
 
 class CreateArticle(graphene.Mutation):
@@ -48,7 +49,8 @@ class CreateArticle(graphene.Mutation):
             content=input.content,
             time=input.time
         )
-        article_instance.save()
+
+        article_service.create_article(article_instance)
         return CreateArticle(
             ok=ok,
             article=article_instance,
