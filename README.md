@@ -12,3 +12,16 @@ Django 和 React 以 GraphQL 作 API 以實現前後端分離的範例
 5. 啟動 Django Server，在 `backend` 底下使用指令 `python manage.py runserver`
 6. 啟動 React Server，在 `frontend` 底下使用指令 `npm start`
 7. 打開瀏覽器，輸入 `localhost:3000` 即可看到 react 畫面
+
+
+## Project Structure
+- backend
+    - 採用 ~~MVT~~ MVC
+    - 採用 Layered
+        - 參考 `article/` 底下，`user/` 沒有弄，為了對照用
+    - GraphQL
+        - 參考 `graphql_api/` 底下
+- frontend
+    - React 專案
+    - 採用 Redux
+    - 採用 Presentational & Container Component
