@@ -1,13 +1,8 @@
+**/.DS_Store/
+
 # IDE
-**/.vscode/
 **/.idea/
-
-# python files
-**/__pycache__/
-
-# db
-*.sqlite3
+**/.vscode/
 
 # env
-.env
-/venv/
+**/.env
