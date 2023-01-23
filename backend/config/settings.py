@@ -13,7 +13,7 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent.parent
 
 load_dotenv(PROJECT_DIR / 'backend/.env')
 
-sys.path.append(os.getenv('ENV_PATH'))
+sys.path.append(os.getenv('VENV_PATH'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
