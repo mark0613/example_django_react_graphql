@@ -1,7 +1,7 @@
 import { request, gql } from 'graphql-request';
 
 
-const baseUrl = '/graphql/';
+const baseUrl = process.env.REACT_APP_GRAPHQL_API;
 
 const graphqlBaseQuery = (baseUrl, query) => {
     return request(baseUrl, query);
