@@ -5,7 +5,7 @@ import {
     Route,
 } from 'react-router-dom';
 
-import { AllArticlesPage } from './pages';
+import { AllArticlesPage, LoginPage } from './pages';
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <BrowserRouter basename="/">
             <Routes>
                 <Route exact path="/" element={ <AllArticlesPage /> } />
+                <Route exact path="/Login" element={ <LoginPage /> } />
                 <Route path="*" element={ <></> } />
             </Routes>
         </BrowserRouter>
