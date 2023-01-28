@@ -2,7 +2,15 @@ import Moment from 'moment';
 
 
 export class DateFormatter {
-    static datetime(datetimeString, format="YYYY-MM-DD HH:mm:ss") {
-        return Moment(datetimeString).format(format);
+    static format(string, format) {
+        return Moment(string).format(format);
+    }
+
+    static datetime(string) {
+        return DateFormatter.format(string, "YYYY-MM-DD HH:mm:ss");
+    }
+
+    static date(string) {
+        return DateFormatter.format(string, "YYYY-MM-DD");
     }
 };
