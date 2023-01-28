@@ -1,6 +1,6 @@
 import { List } from 'antd';
 
-import { Article } from './';
+import { DateFormatter } from '../utils/formatters';
 
 
 export const ArticleList = ({ data }) => {
@@ -10,6 +10,7 @@ export const ArticleList = ({ data }) => {
         }
         return (a.time > b.time) ? 1 : -1;
     });
+
     return (
         <List
             size="small"
@@ -17,7 +18,11 @@ export const ArticleList = ({ data }) => {
             dataSource={ dataSource }
             renderItem={(item) => (
                 <List.Item>
-                    <Article title={item.title} content={item.content} time={item.time} />
+                    <List.Item.Meta
+                        title={ item.title }
+                        description={ DateFormatter.datetime(item.time) }
+                    />
+                    { item.content }
                 </List.Item>
             )}
         />
