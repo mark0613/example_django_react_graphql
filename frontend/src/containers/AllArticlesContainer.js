@@ -15,11 +15,8 @@ export const AllArticlesContainer = () => {
     useEffect(() => {
         dispatch(getAllArticles());
     }, []);
-    
-    const articles = allArticles.articles
-    const data = articles === undefined ? [] : articles;
 
     return (
-        <ArticleList data={ data } />
+        <ArticleList data={ allArticles } />
     );
 };

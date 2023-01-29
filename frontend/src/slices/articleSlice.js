@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
-import { fetchAllArticles } from '../services/graphqlApi';
+import {fetchAllArticles} from '../services/graphqlApi';
 
 
 const initialState = {
-    data: {},
+    data: [],
 };
 
 export const getAllArticles = createAsyncThunk(
     'article/getAllArticles',
     async () => {
         const response = await fetchAllArticles();
-        return response;
+        return response.articles;
     }
 );
 
