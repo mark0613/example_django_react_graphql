@@ -25,6 +25,11 @@ export const ArticleCreatorContainer = () => {
             alert('登入才能建立文章!');
             window.location.href = '/login';
         }
+        if (title === '' || content === '') {
+            error('標題和內文都不能空白!');
+            return;
+        }
+
         dispatch(handleCreateArticle({title, content, time}));
     };
 
