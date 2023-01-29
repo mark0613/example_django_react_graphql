@@ -18,10 +18,11 @@ export const LoginContainer = () => {
         dispatch(setToken({username, password}));
     };
 
-    let isSuccessful = status.slice(0, 5) !== 'error';
-    if (isSuccessful) {
+    if (status === 'ok') {
         Cookie.set('token', token);
+        alert('登入成功!');
+        window.history.back();
     }
 
-    return <LoginForm fail={ !isSuccessful } onLogin={ onLogin } />
+    return <LoginForm fail={ status.startsWith('error') } onLogin={ onLogin } />
 };
