@@ -44,6 +44,7 @@ export const MdArticleCreator = ({mode='w', text='', onCreate}) => {
                     defaultValue={ editorText }
                     style={{ 'resize': 'none', height: '450px' }}
                     onChange={ handleTextAreaChange }
+                    placeholder='內容(支援 markdown 語法)'
                 /> :
                 <div
                     style={{ 
