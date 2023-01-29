@@ -5,7 +5,7 @@ import { ArticleList } from '../components';
 import {
     getAllArticles,
     selectAllArticles,
-} from '../slices/allArticlesSlice';
+} from '../slices/articleSlice';
 
 
 export const AllArticlesContainer = () => {

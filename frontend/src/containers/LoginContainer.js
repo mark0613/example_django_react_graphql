@@ -4,7 +4,7 @@ import { LoginForm } from '../components';
 import {
     getToken,
     selectToken,
-} from '../slices/loginSlice';
+} from '../slices/authSlice';
 import { Cookie } from '../utils/cookie';
 
 

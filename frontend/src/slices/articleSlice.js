@@ -15,7 +15,7 @@ export const getAllArticles = createAsyncThunk(
     }
 );
 
-export const allArticlesSlice = createSlice({
+export const articleSlice = createSlice({
     name: 'article',
     initialState,
     reducers: {},
@@ -28,4 +28,4 @@ export const allArticlesSlice = createSlice({
 
 export const selectAllArticles = (state) => state.article.data;
 
-export default allArticlesSlice.reducer;
+export default articleSlice.reducer;
