@@ -6,3 +6,6 @@
 
 # env
 **/.env
+
+# scrips
+*.bat
