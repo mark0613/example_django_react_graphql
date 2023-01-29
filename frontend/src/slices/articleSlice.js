@@ -10,8 +10,8 @@ const initialState = {
 export const getAllArticles = createAsyncThunk(
     'article/getAllArticles',
     async () => {
-        const responst = await fetchAllArticles();
-        return responst;
+        const response = await fetchAllArticles();
+        return response;
     }
 );
 
