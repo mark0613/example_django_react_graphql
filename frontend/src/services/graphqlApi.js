@@ -3,10 +3,6 @@ import { request, gql } from 'graphql-request';
 
 const baseUrl = process.env.REACT_APP_GRAPHQL_API;
 
-const graphqlBaseQuery = (baseUrl, query) => {
-    return request(baseUrl, query);
-};
-
 export const fetchAllArticles = () => {
     const query = gql`
     query {
@@ -18,7 +14,7 @@ export const fetchAllArticles = () => {
       }      
     `;
 
-    return graphqlBaseQuery(baseUrl, query);
+    return request(baseUrl, query);
 };
 
 export const sendLoginRequest = ({username, password}) => {
@@ -30,5 +26,5 @@ export const sendLoginRequest = ({username, password}) => {
     }
     `;
 
-    return graphqlBaseQuery(baseUrl, query);
+    return request(baseUrl, query);
 };
