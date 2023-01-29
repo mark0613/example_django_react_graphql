@@ -7,7 +7,7 @@ import rehypeHighlight from 'rehype-highlight'
 
 const { TextArea } = Input;
 
-export const MdEditor = ({mode='w', text='', onChange}) => {
+export const MdArticleCreator = ({mode='w', text='', onChange}) => {
     const [editorMode, setEditorMode] = useState(mode)  // mode = { r, w }
     const [editorText, setEditorText] = useState(text);
     const changeMode = () => setEditorMode((editorMode === 'w') ? 'r' : 'w');
