@@ -1,35 +1,38 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { fetchLoginResult } from '../services/graphqlApi';
+import { sendLoginRequest } from '../services/graphqlApi';
 
 
 const initialState = {
-    data: '',
+    token: '',
+    status: '',
 };
 
-export const getToken = createAsyncThunk(
-    'login/getToken',
+export const setToken = createAsyncThunk(
+    'auth/setToken',
     async ({username, password}) => {
-        const response = await fetchLoginResult({username, password});
+        const response = await sendLoginRequest({username, password});
         return response.tokenAuth.token;
     },
 );
 
 export const authSlice = createSlice({
-    name: 'login',
+    name: 'auth',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getToken.fulfilled, (state, action) => {
-                state.data = action.payload;
+            .addCase(setToken.fulfilled, (state, action) => {
+                state.token = action.payload;
+                state.status = 'ok';
             })
-            .addCase(getToken.rejected, (state, action) => {
-                state.data = `error-${action.meta.requestId}`;
+            .addCase(setToken.rejected, (state, action) => {
+                state.status = `error-${action.meta.requestId}`;
             });
     },
 });
 
-export const selectToken = (state) => state.login.data;
+export const selectToken = (state) => state.auth.token;
+export const selectStatus = (state) => state.auth.status;
 
 export default authSlice.reducer;

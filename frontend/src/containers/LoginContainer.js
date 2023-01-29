@@ -2,22 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { LoginForm } from '../components';
 import {
-    getToken,
+    selectStatus,
     selectToken,
+    setToken,
 } from '../slices/authSlice';
 import { Cookie } from '../utils/cookie';
 
 
 export const LoginContainer = () => {
     const token = useSelector(selectToken);
+    const status = useSelector(selectStatus);
     const dispatch = useDispatch();
 
     const onLogin = ({username, password}) => {
-        dispatch(getToken({username, password}));
+        dispatch(setToken({username, password}));
     };
 
-    let isSuccessful = token.slice(0, 5) !== 'error';
-    if (isSuccessful && token !== '') {
+    let isSuccessful = status.slice(0, 5) !== 'error';
+    if (isSuccessful) {
         Cookie.set('token', token);
     }
 

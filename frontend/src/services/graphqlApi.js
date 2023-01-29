@@ -21,7 +21,7 @@ export const fetchAllArticles = () => {
     return graphqlBaseQuery(baseUrl, query);
 };
 
-export const fetchLoginResult = ({username, password}) => {
+export const sendLoginRequest = ({username, password}) => {
     const query = gql`
     mutation {
         tokenAuth(username: "${username}", password: "${password}") {
