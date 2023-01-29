@@ -5,7 +5,7 @@ import {
     Route,
 } from 'react-router-dom';
 
-import { AllArticlesPage, LoginPage } from './pages';
+import {AllArticlesPage, ArticleCreatorPage, LoginPage} from './pages';
 
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
         <BrowserRouter basename="/">
             <Routes>
                 <Route exact path="/" element={ <AllArticlesPage /> } />
-                <Route exact path="/Login" element={ <LoginPage /> } />
+                <Route exact path="/create" element={ <ArticleCreatorPage /> } />
+                <Route exact path="/login" element={ <LoginPage /> } />
                 <Route path="*" element={ <></> } />
             </Routes>
         </BrowserRouter>

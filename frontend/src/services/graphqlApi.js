@@ -1,7 +1,12 @@
 import { request, gql } from 'graphql-request';
+import { Cookie } from "../utils/cookie";
 
 
-const baseUrl = process.env.REACT_APP_GRAPHQL_API;
+const url = process.env.REACT_APP_GRAPHQL_API;
+const variables = {};
+const headers = {
+    'Authorization': `JWT ${Cookie.get('token')}`,
+};
 
 export const fetchAllArticles = () => {
     const query = gql`
@@ -14,8 +19,24 @@ export const fetchAllArticles = () => {
       }      
     `;
 
-    return request(baseUrl, query);
+    return request(url, query);
 };
+
+export const sendCreateArticleRequest = ({title, content, time}) => {
+    const query = gql`
+    mutation {
+        createArticle(input: {
+            title: "${title}",
+            content: "${content}",
+            time: "${time}"
+        }) {
+            ok article { id title }
+        }
+    }
+    `;
+
+    return request(url, query, variables, headers);
+}
 
 export const sendLoginRequest = ({username, password}) => {
     const query = gql`
@@ -26,5 +47,5 @@ export const sendLoginRequest = ({username, password}) => {
     }
     `;
 
-    return request(baseUrl, query);
+    return request(url, query);
 };

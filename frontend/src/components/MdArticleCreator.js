@@ -7,15 +7,17 @@ import rehypeHighlight from 'rehype-highlight'
 
 const { TextArea } = Input;
 
-export const MdArticleCreator = ({mode='w', text='', onChange}) => {
+export const MdArticleCreator = ({mode='w', text='', onCreate}) => {
     const [editorMode, setEditorMode] = useState(mode)  // mode = { r, w }
     const [editorText, setEditorText] = useState(text);
+    const [title, setTitle] = useState('');
     const changeMode = () => setEditorMode((editorMode === 'w') ? 'r' : 'w');
-    const handleTextAreaChange = (e) => {
-        setEditorText(e.target.value);
-        if (typeof onChange !== 'undefined') {
-            onChange(editorText);
-        }
+    const handleTextAreaChange = (e) => setEditorText(e.target.value);
+    const handleInputChange = (e) => setTitle(e.target.value);
+    const handleSubmit = () => {
+        let content = editorText;
+        let time = new Date().toISOString();
+        onCreate({title, content, time});
     };
 
     return (
@@ -28,6 +30,14 @@ export const MdArticleCreator = ({mode='w', text='', onChange}) => {
                 />
             }
         >
+            <div style={{ margin: '5px 0px' }}>
+                <Input
+                    defaultValue={ title }
+                    placeholder='標題'
+                    onChange={ handleInputChange }
+                />
+            </div>
+
             {
                 editorMode === 'w' ?
                 <TextArea
@@ -51,6 +61,11 @@ export const MdArticleCreator = ({mode='w', text='', onChange}) => {
                     </ReactMarkdown> 
                 </div>
             }
+            <div style={{ margin: '5px 0px' }}>
+                <Button onClick={ handleSubmit } type='primary'>
+                    建立
+                </Button>
+            </div>
         </Card>
     );
 };
