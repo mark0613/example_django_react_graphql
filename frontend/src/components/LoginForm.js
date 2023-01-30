@@ -7,7 +7,7 @@ export const LoginForm = ({ fail = false, onLogin }) => {
 
     return (
         <>
-            {fail ? <Alert message="帳號或密碼錯誤!" type="error" showIcon /> : <></>}
+            {fail ? <Alert message="帳號或密碼錯誤!" type="error" showIcon /> : <> </>}
             <br />
             <Form
                 name="basic"

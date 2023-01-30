@@ -3,7 +3,7 @@ import { List } from 'antd';
 import { DateFormatter } from '../utils/formatters';
 
 export const ArticleList = ({ data }) => {
-    let dataSource = [...data].sort((a, b) => {
+    const dataSource = [...data].sort((a, b) => {
         if (a.time === b.time) {
             return 0;
         }

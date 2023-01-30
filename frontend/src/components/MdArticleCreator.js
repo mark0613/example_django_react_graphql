@@ -14,8 +14,8 @@ export const MdArticleCreator = ({ mode = 'w', text = '', onCreate }) => {
     const handleTextAreaChange = (e) => setEditorText(e.target.value);
     const handleInputChange = (e) => setTitle(e.target.value);
     const handleSubmit = () => {
-        let content = editorText;
-        let time = new Date().toISOString();
+        const content = editorText;
+        const time = new Date().toISOString();
         onCreate({ title, content, time });
     };
 

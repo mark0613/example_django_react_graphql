@@ -16,7 +16,7 @@ export class Cookie {
     }
 
     static contains(key) {
-        return cookies.getAll().hasOwnProperty(key);
+        return Object.prototype.hasOwnProperty.call(cookies.getAll(), key);
     }
 
     static remove(key) {
