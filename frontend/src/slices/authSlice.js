@@ -2,19 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { sendLoginRequest } from '../services/graphqlApi';
 
-
 const initialState = {
     token: '',
     status: '',
 };
 
-export const setToken = createAsyncThunk(
-    'auth/setToken',
-    async ({username, password}) => {
-        const response = await sendLoginRequest({username, password});
-        return response.tokenAuth.token;
-    },
-);
+export const setToken = createAsyncThunk('auth/setToken', async ({ username, password }) => {
+    const response = await sendLoginRequest({ username, password });
+    return response.tokenAuth.token;
+});
 
 export const authSlice = createSlice({
     name: 'auth',

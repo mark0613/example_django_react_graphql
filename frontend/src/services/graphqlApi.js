@@ -1,28 +1,27 @@
 import { request, gql } from 'graphql-request';
-import { Cookie } from "../utils/cookie";
-
+import { Cookie } from '../utils/cookie';
 
 const url = process.env.REACT_APP_GRAPHQL_API;
 const variables = {};
 const headers = {
-    'Authorization': `JWT ${Cookie.get('token')}`,
+    Authorization: `JWT ${Cookie.get('token')}`,
 };
 
 export const fetchAllArticles = () => {
     const query = gql`
-    query {
-        articles {
-            title,
-            content,
-            time,
+        query {
+            articles {
+                title
+                content
+                time
+            }
         }
-      }      
     `;
 
     return request(url, query);
 };
 
-export const sendCreateArticleRequest = ({title, content, time}) => {
+export const sendCreateArticleRequest = ({ title, content, time }) => {
     const query = gql`
     mutation {
         createArticle(input: {
@@ -36,9 +35,9 @@ export const sendCreateArticleRequest = ({title, content, time}) => {
     `;
 
     return request(url, query, variables, headers);
-}
+};
 
-export const sendLoginRequest = ({username, password}) => {
+export const sendLoginRequest = ({ username, password }) => {
     const query = gql`
     mutation {
         tokenAuth(username: "${username}", password: "${password}") {

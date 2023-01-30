@@ -1,8 +1,7 @@
 import { Col, Row } from 'antd';
 
 import Template from './Template';
-import { ArticleCreatorContainer } from "../containers/ArticleCreatorContainer";
-
+import { ArticleCreatorContainer } from '../containers/ArticleCreatorContainer';
 
 export const ArticleCreatorPage = () => {
     const content = (
@@ -14,7 +13,5 @@ export const ArticleCreatorPage = () => {
             <Col span={4}></Col>
         </Row>
     );
-    return (
-        <Template content={ content } />
-    );
+    return <Template content={content} />;
 };

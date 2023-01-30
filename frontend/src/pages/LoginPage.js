@@ -3,7 +3,6 @@ import { Col, Card, Row, Typography } from 'antd';
 import { LoginContainer } from '../containers';
 import Template from './Template';
 
-
 const { Title } = Typography;
 
 export const LoginPage = () => {
@@ -11,9 +10,7 @@ export const LoginPage = () => {
         <Row>
             <Col span={8}></Col>
             <Col span={8}>
-                <Title style={{ textAlign: 'center' }}>
-                    Login
-                </Title>
+                <Title style={{ textAlign: 'center' }}>Login</Title>
                 <Card>
                     <LoginContainer />
                 </Card>
@@ -22,7 +19,5 @@ export const LoginPage = () => {
         </Row>
     );
 
-    return (
-        <Template content={ content } />
-    );
+    return <Template content={content} />;
 };

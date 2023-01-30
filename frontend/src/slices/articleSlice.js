@@ -2,25 +2,25 @@ import { createAsyncThunk, createSlice, isFulfilled, isRejected } from '@reduxjs
 
 import { fetchAllArticles, sendCreateArticleRequest } from '../services/graphqlApi';
 
-
 const initialState = {
     data: [],
     status: '',
     requestId: '',
 };
 
-export const getAllArticles = createAsyncThunk(
-    'article/getAllArticles',
-    async () => {
-        const response = await fetchAllArticles();
-        return response.articles;
-    }
-);
+export const getAllArticles = createAsyncThunk('article/getAllArticles', async () => {
+    const response = await fetchAllArticles();
+    return response.articles;
+});
 
 export const handleCreateArticle = createAsyncThunk(
     'article/handleCreateArticle',
-    async ({title, content, time}) => {
-        const response = await sendCreateArticleRequest({title, content, time});
+    async ({ title, content, time }) => {
+        const response = await sendCreateArticleRequest({
+            title,
+            content,
+            time,
+        });
         return response.createArticle;
     }
 );
@@ -31,7 +31,7 @@ export const articleSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addMatcher(isFulfilled(getAllArticles, handleCreateArticle),(state, action) => {
+            .addMatcher(isFulfilled(getAllArticles, handleCreateArticle), (state, action) => {
                 state.status = 'ok';
                 state.data = action.payload;
             })

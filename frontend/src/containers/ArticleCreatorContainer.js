@@ -1,11 +1,15 @@
-import { message } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { message } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { handleCreateArticle, selectCreateArticleResult, selectRequestId, selectStatus } from "../slices/articleSlice";
-import { MdArticleCreator } from "../components";
-import { Cookie } from "../utils/cookie";
-import { useEffect } from "react";
-
+import {
+    handleCreateArticle,
+    selectCreateArticleResult,
+    selectRequestId,
+    selectStatus,
+} from '../slices/articleSlice';
+import { MdArticleCreator } from '../components';
+import { Cookie } from '../utils/cookie';
+import { useEffect } from 'react';
 
 export const ArticleCreatorContainer = () => {
     const [messageApi, contextHolder] = message.useMessage();
@@ -20,7 +24,7 @@ export const ArticleCreatorContainer = () => {
     const requestId = useSelector(selectRequestId);
     const dispatch = useDispatch();
 
-    const onCreate = ({title, content, time}) => {
+    const onCreate = ({ title, content, time }) => {
         if (!Cookie.contains('token')) {
             alert('登入才能建立文章!');
             window.location.href = '/login';
@@ -30,7 +34,7 @@ export const ArticleCreatorContainer = () => {
             return;
         }
 
-        dispatch(handleCreateArticle({title, content, time}));
+        dispatch(handleCreateArticle({ title, content, time }));
     };
 
     useEffect(() => {
@@ -45,8 +49,8 @@ export const ArticleCreatorContainer = () => {
 
     return (
         <>
-            { contextHolder }
-            <MdArticleCreator onCreate={ onCreate } />
+            {contextHolder}
+            <MdArticleCreator onCreate={onCreate} />
         </>
     );
-}
+};
