@@ -17,6 +17,8 @@
         "react/react-in-jsx-scope": "off",
         "no-param-reassign": [2, { "props": false }],
         "prefer-destructuring": ["error", { "object": true, "array": false }],
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+        "react/prop-types": "off"
     }
 }
