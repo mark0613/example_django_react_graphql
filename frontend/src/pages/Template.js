@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 
-const Template = ({content}) => (
+const Template = ({ content }) => (
     <Layout className="layout">
         <Header>
             <div className="logo" />
